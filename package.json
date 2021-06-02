@@ -1,0 +1,33 @@
+{
+  "name": "goit-js-hw-13-image-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladymyrRzhanov/goit-js-hw-13-image-finder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladymyrRzhanov/goit-js-hw-13-image-finder/issues"
+  },
+  "homepage": "https://github.com/VladymyrRzhanov/goit-js-hw-13-image-finder#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "sass": "^1.34.0"
+  },
+  "dependencies": {
+    "basiclightbox": "^5.0.4",
+    "infinite-scroll": "^4.0.1",
+    "jquery": "^3.6.0",
+    "jquery-bridget": "^3.0.0",
+    "lodash.debounce": "^4.0.8",
+    "material-design-icons": "^3.0.1"
+  }
+}

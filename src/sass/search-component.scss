@@ -1,0 +1,31 @@
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+form > input {
+  width: 15%;
+  margin-right: 30px;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+.button {
+  // display: block;
+  font-size: 20px;
+  padding: 10px 25px;
+  cursor: pointer;
+  color: #fff;
+
+  background-color: blue;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  border-color: transparent;
+}
+
+.load-btn {
+  margin: 0 auto;
+  display: block;
+}

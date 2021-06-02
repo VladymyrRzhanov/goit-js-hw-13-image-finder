@@ -1,0 +1,60 @@
+.gallery {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+    padding-bottom: 30px;
+  }
+}
+
+.gallery__item {
+  display: flex;
+
+  @media screen and (min-width: $tablet) {
+    flex-basis: calc((100% - 2 * 30px) / 2);
+    margin: 5px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    flex-basis: calc((100% - 4 * 10px) / 4);
+    margin: 5px;
+  }
+}
+
+.gallery__item:not(:last-child) {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 30px;
+  }
+}
+
+.photo-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.photo-card:hover .stats {
+  transform: translateY(0);
+}
+
+.stats {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(47 48 58 / 80%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transform: translateY(100%);
+  padding: 10px 0;
+  color: rgba(255, 255, 255, 0.8);
+
+  transition: $changes;
+}
+
+.stats-item:not(:last-child) {
+  margin-right: 10px;
+}
