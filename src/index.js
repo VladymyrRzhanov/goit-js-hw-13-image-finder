@@ -10,33 +10,52 @@ const apiService = new ApiService();
 const refs = {
     searchForm: document.querySelector('#search-form'),
     cardsGallery: document.querySelector('.gallery'),
-    uploadBtn: document.querySelector('[data-upload]')
+    uploadBtn: document.querySelector('[data-upload]'),
+    loadCards: document.querySelector('#load-cards')
 };
 
+
+const onEntry = entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && apiService.query !== '') {
+        renderCards();
+        apiService.nextPage();
+      };
+  });
+};
+
+const loadMoreCards = () => {
+    const observer = new IntersectionObserver(onEntry, {
+        rootMargin: '150px',
+    });
+    observer.observe(refs.loadCards);
+};
 
 const renderCards = () => {
-    apiService.fetchImages()
+    return apiService.fetchImages()
         .then(hits => refs.cardsGallery.insertAdjacentHTML('beforeend', photoCardsTpl(hits)));
 };
-    refs.uploadBtn.hidden = true;
+    
 
 const onSearch = e => {
     e.preventDefault();
 
     apiService.resetPage();
-    refs.uploadBtn.hidden = true;
-    refs.uploadBtn.classList.remove('load-btn');
+    refs.uploadBtn.hidden = false;
+    refs.uploadBtn.classList.add('load-btn');
+
     apiService.query = e.currentTarget.elements.query.value.trim();
     refs.cardsGallery.innerHTML = '';
     if (apiService.query) {
         renderCards();
-        refs.uploadBtn.hidden = false;
-        refs.uploadBtn.classList.add('load-btn');
-    }
+    };
 };
 
-const uploadedCards = () => {
-    renderCards();
+const uploadedCards = async e => {
+    const cards = await renderCards();
+    refs.uploadBtn.hidden = true;
+    refs.uploadBtn.classList.remove('load-btn');
+    loadMoreCards();
 };
 
 const onOpenBigImage = e => {
@@ -53,15 +72,6 @@ const onOpenBigImage = e => {
     instance.show();
 
     window.addEventListener('keydown', onKeyCloseModal);
-};
-    
-
-
-const onKeyCloseModal = e => {
-    if (e.code === "Escape") {
-        // instance.close();
-        console.log(e.code)
-    };
 };
 
 
