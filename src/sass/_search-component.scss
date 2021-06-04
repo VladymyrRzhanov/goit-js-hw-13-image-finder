@@ -13,7 +13,6 @@ form > input {
 }
 
 .button {
-  // display: block;
   font-size: 20px;
   padding: 10px 25px;
   cursor: pointer;
@@ -23,6 +22,12 @@ form > input {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border-color: transparent;
+
+  &:disabled {
+    background-color: rgba(204, 204, 204, 0.6);
+    color: rgba(0, 0, 0, 0.3);
+    cursor: inherit;
+  }
 }
 
 .load-btn {

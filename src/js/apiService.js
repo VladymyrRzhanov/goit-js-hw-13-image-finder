@@ -8,12 +8,11 @@ export default class ApiService {
         this.page = 1;
     };
 
-    fetchImages() {
-        return fetch(`${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchquery}&page=${this.page}&per_page=12&key=${API_KEY}`)
-            .then(responsive => responsive.json()).then(({ hits }) => {
-            this.nextPage();
-            return hits;
-        });
+    async fetchImages() {
+        const responsive = await fetch(`${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchquery}&page=${this.page}&per_page=12&key=${API_KEY}`);
+        const { hits } = await responsive.json();
+        this.nextPage();
+        return hits;
     };
 
     nextPage() {
