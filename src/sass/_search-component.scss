@@ -12,12 +12,12 @@ form > input {
   font-size: 20px;
 }
 
-.button {
+.btn {
+  display: block;
   font-size: 20px;
   padding: 10px 25px;
   cursor: pointer;
   color: #fff;
-
   background-color: blue;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
@@ -28,9 +28,28 @@ form > input {
     color: rgba(0, 0, 0, 0.3);
     cursor: inherit;
   }
+
+  &-load {
+    margin: 0 auto;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+
+  & > .spinner.is-hidden {
+    display: none;
+  }
 }
 
-.load-btn {
-  margin: 0 auto;
-  display: block;
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
+}
+
+.mb-2 {
+  margin-bottom: 0 !important;
 }

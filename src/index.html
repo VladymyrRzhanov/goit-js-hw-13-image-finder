@@ -6,18 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <body>
     <main>
         <section>
             <div class="container">
                 <form class="search-form" id="search-form">
-                    <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
-                    <button class="button" disabled>Поиск</button>
+                    <input type="text" name="query" autocomplete="off" placeholder="Поиск картинок..." />
+                    <button class="btn btn-primary mb-2" data-search>
+                    <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
+                    <span class="label">Поиск</span>
+                    </button>
                 </form>
                 <ul class="gallery">
                 </ul>
-                <button class="button" data-upload hidden>Загрузить еще</button>
+                <button type="button" class="btn btn-load btn-primary button" data-upload>
+                    <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
+                    <span class="label">Загрузить еще</span>
+                </button>
             </div>
         </section>
         <div id="load-cards"></div>
