@@ -1,0 +1,14 @@
+.scroll {
+  position: fixed;
+  color: #000;
+  bottom: 20px;
+  right: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.5s ease-in;
+
+  &-show {
+    opacity: 1;
+  }
+}
