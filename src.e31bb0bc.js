@@ -172,9 +172,9 @@ exports.default = void 0;
 const refs = {
   searchForm: document.querySelector('#search-form'),
   cardsGallery: document.querySelector('.gallery'),
-  // uploadBtn: document.querySelector('[data-upload]'),
   loadCards: document.querySelector('#load-cards'),
-  searchBtn: document.querySelector('[data-search]')
+  searchBtn: document.querySelector('[data-search]'),
+  scrollToTop: document.querySelector('#scrollTop')
 };
 var _default = refs;
 exports.default = _default;
@@ -2554,7 +2554,34 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"./..\\images\\arrow.svg":[["arrow.305c14c2.svg","images/arrow.svg"],"images/arrow.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/to-top.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getScroll = exports.onScrollTop = void 0;
+
+var _refs = _interopRequireDefault(require("./refs"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const getScroll = () => {
+  if (document.documentElement.scrollTop) {
+    _refs.default.scrollToTop.classList.add('scroll-show');
+  } else {
+    _refs.default.scrollToTop.classList.remove('scroll-show');
+  }
+};
+
+exports.getScroll = getScroll;
+
+const onScrollTop = () => {
+  window.scrollTo(pageYOffset, 0);
+};
+
+exports.onScrollTop = onScrollTop;
+},{"./refs":"js/refs.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _apiService = _interopRequireDefault(require("./js/apiService"));
@@ -2570,6 +2597,8 @@ var _notify = require("./js/notify");
 var _photoCards = _interopRequireDefault(require("./templates/photo-cards.hbs"));
 
 require("./sass/main.scss");
+
+var _toTop = require("./js/to-top");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2640,6 +2669,8 @@ const onSearchBtn = async e => {
   ;
 };
 
+window.onscroll = _toTop.getScroll;
+
 const onEnabledBtn = e => {
   searchBtn.enable('Поиск');
 
@@ -2655,7 +2686,14 @@ const uploadedCards = async e => {
   const cards = await renderCards();
   loadBtn.enable('Загрузить еще');
   loadMoreCards();
-};
+}; // window.onscroll = function() {
+//    if (document.documentElement.scrollTop) {
+//        refs.scrollToTop.classList.add('scroll-show')
+//    } else {
+//        refs.scrollToTop.classList.remove('scroll-show')
+//    }
+// }
+
 
 _refs.default.searchForm.addEventListener('submit', onSearchBtn);
 
@@ -2664,7 +2702,12 @@ _refs.default.searchForm.addEventListener('input', onEnabledBtn);
 loadBtn.refs.button.addEventListener('click', uploadedCards);
 
 _refs.default.cardsGallery.addEventListener('click', _openModal.default);
-},{"./js/apiService":"js/apiService.js","./js/refs":"js/refs.js","./js/load-btn":"js/load-btn.js","./js/open-modal":"js/open-modal.js","./js/notify":"js/notify.js","./templates/photo-cards.hbs":"templates/photo-cards.hbs","./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+_refs.default.scrollToTop.addEventListener('click', _toTop.onScrollTop // () => {
+// window.scrollTo(pageYOffset, 0);
+// }
+);
+},{"./js/apiService":"js/apiService.js","./js/refs":"js/refs.js","./js/load-btn":"js/load-btn.js","./js/open-modal":"js/open-modal.js","./js/notify":"js/notify.js","./templates/photo-cards.hbs":"templates/photo-cards.hbs","./sass/main.scss":"sass/main.scss","./js/to-top":"js/to-top.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2692,7 +2735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64634" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49520" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
