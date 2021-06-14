@@ -1,14 +1,15 @@
-export default jQuery(document).ready(function() {
-  var btnToTop = $('#to-top');  
-  $(window).scroll(function() {     
-    if ($(window).scrollTop() > 400) {
-       btnToTop.addClass('show');
-     } else {
-       btnToTop.removeClass('show');
-     }
-   });
-   btnToTop.on('click', function(e) {
-     e.preventDefault();
-     $('html, body').animate({scrollTop:0}, '400');
-   });
-});
+import refs from "./refs";
+
+const getScroll = () => {
+   if (document.documentElement.scrollTop) {
+       refs.scrollToTop.classList.add('scroll-show')
+   } else {
+       refs.scrollToTop.classList.remove('scroll-show')
+   }
+}
+
+const onScrollTop = () => {
+    window.scrollTo(pageYOffset, 0);
+}
+
+export {onScrollTop,getScroll}
